@@ -1,0 +1,164 @@
+{
+  "asset_manifest": {
+    "audio": [
+      "Footstep_SFX"
+    ],
+    "ui_sprites": [
+      "UI_BG_Solid",
+      "UI_Btn_Start"
+    ]
+  },
+  "scenes": [
+    {
+      "scene_name": "IngameScene",
+      "gameObjects": [
+        {
+          "uid": "obj_player_01",
+          "name": "Player",
+          "tag": "Player",
+          "layer": "Player",
+          "parent_uid": null,
+          "transform": {
+            "position": [0, 1, 0],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "CharacterController",
+              "isCustomScript": false,
+              "properties": { "height": 2.0, "radius": 0.5 }
+            },
+            {
+              "name": "PlayerController",
+              "isCustomScript": true,
+              "properties": { "moveSpeed": 5.0, "jumpForce": 7.0 }
+            },
+            {
+              "name": "AudioSource",
+              "isCustomScript": false,
+              "properties": { "clip": "Footstep_SFX", "loop": false }
+            }
+          ]
+        },
+        {
+          "uid": "obj_camera_main",
+          "name": "MainCamera",
+          "tag": "MainCamera",
+          "layer": "Default",
+          "parent_uid": "obj_player_01",
+          "transform": {
+            "position": [0, 1.5, -3],
+            "rotation": [15, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "Camera",
+              "isCustomScript": false,
+              "properties": { "fieldOfView": 60 }
+            }
+          ]
+        },
+        {
+          "uid": "obj_canvas_hud",
+          "name": "HUD_Canvas",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": null,
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [1920, 1080],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [1, 1]
+          },
+          "components": [
+            {
+              "name": "Canvas",
+              "isCustomScript": false,
+              "properties": { "renderMode": "ScreenSpaceOverlay", "sortingOrder": 0 }
+            },
+            {
+              "name": "CanvasScaler",
+              "isCustomScript": false,
+              "properties": {
+                "uiScaleMode": "ScaleWithScreenSize",
+                "referenceResolution": [1920, 1080],
+                "screenMatchMode": "MatchWidthOrHeight",
+                "match": 0.5
+              }
+            },
+            {
+              "name": "GraphicRaycaster",
+              "isCustomScript": false,
+              "properties": { "ignoreReversedGraphics": true }
+            }
+          ]
+        },
+        {
+          "uid": "obj_img_bg",
+          "name": "Background_Image",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_canvas_hud",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [0, 0],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [1, 1],
+            "offsetMin": [0, 0],
+            "offsetMax": [0, 0]
+          },
+          "components": [
+            {
+              "name": "Image",
+              "isCustomScript": false,
+              "properties": {
+                "color": "#000000",
+                "sprite": "UI_BG_Solid",
+                "raycastTarget": true
+              }
+            }
+          ]
+        },
+        {
+          "uid": "obj_btn_start",
+          "name": "StartButton",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_canvas_hud",
+          "rectTransform": {
+            "anchoredPosition": [0, -200, 0],
+            "sizeDelta": [200, 80],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0.5, 0.5],
+            "anchorMax": [0.5, 0.5]
+          },
+          "components": [
+            {
+              "name": "Image",
+              "isCustomScript": false,
+              "properties": { "sprite": "UI_Btn_Start", "raycastTarget": true }
+            },
+            {
+              "name": "Button",
+              "isCustomScript": false,
+              "events": {
+                "onClick": [
+                  {
+                    "target_uid": "@obj_player_01",
+                    "component": "PlayerController",
+                    "method": "StartGame",
+                    "param": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

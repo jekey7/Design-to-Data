@@ -1,0 +1,9 @@
+{
+  "name": "com.jekey.design-to-data",
+  "version": "0.1.0",
+  "displayName": "Design to Data",
+  "description": "Build Unity scenes from validated Game Design Format (GDF) documents and export R-GDF.",
+  "unity": "6000.3",
+  "author": { "name": "Jekey" },
+  "dependencies": { "com.unity.nuget.newtonsoft-json": "3.2.2" }
+}

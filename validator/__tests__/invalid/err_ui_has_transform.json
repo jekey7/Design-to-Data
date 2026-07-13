@@ -1,0 +1,69 @@
+{
+  "asset_manifest": {
+    "audio": [],
+    "ui_sprites": []
+  },
+  "scenes": [
+    {
+      "scene_name": "MinimalScene",
+      "gameObjects": [
+        {
+          "uid": "obj_canvas_01",
+          "name": "UICanvas",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": null,
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [1920, 1080],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [1, 1]
+          },
+          "components": [
+            {
+              "name": "Canvas",
+              "isCustomScript": false,
+              "properties": {
+                "renderMode": "ScreenSpaceOverlay",
+                "sortingOrder": 0
+              }
+            },
+            {
+              "name": "CanvasScaler",
+              "isCustomScript": false,
+              "properties": {
+                "uiScaleMode": "ScaleWithScreenSize",
+                "referenceResolution": [1920, 1080],
+                "screenMatchMode": "MatchWidthOrHeight",
+                "match": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "uid": "obj_panel_01",
+          "name": "Panel",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_canvas_01",
+          "transform": {
+            "position": [0, 0, 0],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "Image",
+              "isCustomScript": false,
+              "properties": {
+                "color": "#FFFFFF",
+                "raycastTarget": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "asset_manifest": {
+    "audio": [],
+    "ui_sprites": []
+  },
+  "scenes": [
+    {
+      "scene_name": "MinimalScene",
+      "gameObjects": [
+        {
+          "uid": "obj_cube_01",
+          "name": "Cube",
+          "tag": "Untagged",
+          "layer": "Default",
+          "parent_uid": null,
+          "transform": {
+            "position": [0, 0, 0],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "MeshRenderer",
+              "isCustomScript": false,
+              "properties": {}
+            }
+          ]
+        },
+        {
+          "uid": "obj_child_01",
+          "name": "ChildCube",
+          "tag": "Untagged",
+          "layer": "Default",
+          "parent_uid": "obj_nonexistent_9999",
+          "transform": {
+            "position": [1, 0, 0],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "MeshRenderer",
+              "isCustomScript": false,
+              "properties": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

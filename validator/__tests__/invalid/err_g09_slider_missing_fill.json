@@ -1,0 +1,161 @@
+{
+  "asset_manifest": {
+    "audio": [],
+    "ui_sprites": [
+      "UI_Slider_Bg",
+      "UI_Slider_Handle"
+    ]
+  },
+  "scenes": [
+    {
+      "scene_name": "SliderMissingFillScene",
+      "gameObjects": [
+        {
+          "uid": "obj_canvas",
+          "name": "Canvas",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": null,
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [1920, 1080],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [1, 1]
+          },
+          "components": [
+            {
+              "name": "Canvas",
+              "isCustomScript": false,
+              "properties": { "renderMode": "ScreenSpaceOverlay", "sortingOrder": 0 }
+            },
+            {
+              "name": "CanvasScaler",
+              "isCustomScript": false,
+              "properties": {
+                "uiScaleMode": "ScaleWithScreenSize",
+                "referenceResolution": [1920, 1080],
+                "screenMatchMode": "MatchWidthOrHeight",
+                "matchWidthOrHeight": 0.5
+              }
+            },
+            {
+              "name": "GraphicRaycaster",
+              "isCustomScript": false,
+              "properties": {}
+            }
+          ]
+        },
+        {
+          "uid": "obj_event_system",
+          "name": "EventSystem",
+          "tag": "Untagged",
+          "layer": "Default",
+          "parent_uid": null,
+          "transform": {
+            "position": [0, 0, 0],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            { "name": "EventSystem", "isCustomScript": false, "properties": {} },
+            { "name": "StandaloneInputModule", "isCustomScript": false, "properties": {} }
+          ]
+        },
+        {
+          "uid": "obj_slider",
+          "name": "VolumeSlider",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_canvas",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [300, 20],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0.5, 0.5],
+            "anchorMax": [0.5, 0.5]
+          },
+          "components": [
+            { "name": "Slider", "isCustomScript": false, "properties": {} }
+          ]
+        },
+        {
+          "uid": "obj_slider_bg",
+          "name": "Background",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_slider",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [300, 20],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0.25],
+            "anchorMax": [1, 0.75]
+          },
+          "components": [
+            {
+              "name": "Image",
+              "isCustomScript": false,
+              "properties": { "sprite": "UI_Slider_Bg", "raycastTarget": false }
+            }
+          ]
+        },
+        {
+          "uid": "obj_slider_fill_area",
+          "name": "Fill Area",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_slider",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [-20, 0],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0.25],
+            "anchorMax": [1, 0.75]
+          },
+          "components": [
+            { "name": "RectTransform", "isCustomScript": false, "properties": {} }
+          ]
+        },
+        {
+          "uid": "obj_slider_handle_area",
+          "name": "Handle Slide Area",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_slider",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [-20, 0],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [1, 1]
+          },
+          "components": [
+            { "name": "RectTransform", "isCustomScript": false, "properties": {} }
+          ]
+        },
+        {
+          "uid": "obj_slider_handle",
+          "name": "Handle",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_slider_handle_area",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [20, 0],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [0, 1]
+          },
+          "components": [
+            {
+              "name": "Image",
+              "isCustomScript": false,
+              "properties": { "sprite": "UI_Slider_Handle", "raycastTarget": true }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

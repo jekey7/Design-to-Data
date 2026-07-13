@@ -1,0 +1,60 @@
+{
+  "asset_manifest": {
+    "audio": [],
+    "ui_sprites": []
+  },
+  "scenes": [
+    {
+      "scene_name": "CameraTestScene",
+      "gameObjects": [
+        {
+          "uid": "obj_camera_main",
+          "name": "MainCamera",
+          "tag": "MainCamera",
+          "layer": "Default",
+          "parent_uid": null,
+          "transform": {
+            "position": [0, 5, -10],
+            "rotation": [15, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "Camera",
+              "isCustomScript": false,
+              "properties": {
+                "fieldOfView": 60,
+                "nearClipPlane": 0.1,
+                "farClipPlane": 1000
+              }
+            }
+          ]
+        },
+        {
+          "uid": "obj_camera_ui",
+          "name": "UICamera",
+          "tag": "Untagged",
+          "layer": "Default",
+          "parent_uid": null,
+          "transform": {
+            "position": [0, 0, -10],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "Camera",
+              "isCustomScript": false,
+              "properties": {
+                "fieldOfView": 60,
+                "nearClipPlane": 0.1,
+                "farClipPlane": 100,
+                "depth": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

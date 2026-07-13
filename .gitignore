@@ -1,0 +1,26 @@
+node_modules/
+validator/node_modules/
+
+# Unity generated files
+[Ll]ibrary/
+[Ll]ogs/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Uu]ser[Ss]ettings/
+*.csproj
+*.sln
+*.user
+*.userprefs
+
+# Generated D2D artifacts
+Assets/D2D/GDF.json
+Assets/D2D/Scenes/
+Assets/D2D/Prefabs/
+Assets/D2D/RGdf/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example

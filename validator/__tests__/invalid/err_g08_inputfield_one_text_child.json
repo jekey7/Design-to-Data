@@ -1,0 +1,103 @@
+{
+  "asset_manifest": {
+    "audio": [],
+    "ui_sprites": []
+  },
+  "scenes": [
+    {
+      "scene_name": "InputFieldOneTextScene",
+      "gameObjects": [
+        {
+          "uid": "obj_canvas",
+          "name": "Canvas",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": null,
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [1920, 1080],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [1, 1]
+          },
+          "components": [
+            {
+              "name": "Canvas",
+              "isCustomScript": false,
+              "properties": { "renderMode": "ScreenSpaceOverlay", "sortingOrder": 0 }
+            },
+            {
+              "name": "CanvasScaler",
+              "isCustomScript": false,
+              "properties": {
+                "uiScaleMode": "ScaleWithScreenSize",
+                "referenceResolution": [1920, 1080],
+                "screenMatchMode": "MatchWidthOrHeight",
+                "matchWidthOrHeight": 0.5
+              }
+            },
+            {
+              "name": "GraphicRaycaster",
+              "isCustomScript": false,
+              "properties": {}
+            }
+          ]
+        },
+        {
+          "uid": "obj_event_system",
+          "name": "EventSystem",
+          "tag": "Untagged",
+          "layer": "Default",
+          "parent_uid": null,
+          "transform": {
+            "position": [0, 0, 0],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            { "name": "EventSystem", "isCustomScript": false, "properties": {} },
+            { "name": "StandaloneInputModule", "isCustomScript": false, "properties": {} }
+          ]
+        },
+        {
+          "uid": "obj_inputfield",
+          "name": "NameInputField",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_canvas",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [300, 40],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0.5, 0.5],
+            "anchorMax": [0.5, 0.5]
+          },
+          "components": [
+            { "name": "InputField", "isCustomScript": false, "properties": {} }
+          ]
+        },
+        {
+          "uid": "obj_inputfield_text",
+          "name": "Text",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_inputfield",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [-20, -10],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [1, 1]
+          },
+          "components": [
+            {
+              "name": "TextMeshProUGUI",
+              "isCustomScript": false,
+              "properties": { "text": "", "fontSize": 14, "raycastTarget": false }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

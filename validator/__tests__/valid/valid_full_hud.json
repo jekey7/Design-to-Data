@@ -1,0 +1,261 @@
+{
+  "asset_manifest": {
+    "audio": [
+      "BGM_Main",
+      "SFX_ButtonClick"
+    ],
+    "ui_sprites": [
+      "UI_BG_Dark",
+      "UI_Btn_Play",
+      "UI_Btn_Quit"
+    ]
+  },
+  "scenes": [
+    {
+      "scene_name": "MainMenuScene",
+      "gameObjects": [
+        {
+          "uid": "obj_bgm_manager",
+          "name": "BGMManager",
+          "tag": "Untagged",
+          "layer": "Default",
+          "parent_uid": null,
+          "transform": {
+            "position": [0, 0, 0],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "AudioSource",
+              "isCustomScript": false,
+              "properties": {
+                "clip": "BGM_Main",
+                "loop": true,
+                "volume": 0.8
+              }
+            }
+          ]
+        },
+        {
+          "uid": "obj_canvas_menu",
+          "name": "MenuCanvas",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": null,
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [1920, 1080],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [1, 1]
+          },
+          "components": [
+            {
+              "name": "Canvas",
+              "isCustomScript": false,
+              "properties": {
+                "renderMode": "ScreenSpaceOverlay",
+                "sortingOrder": 0
+              }
+            },
+            {
+              "name": "CanvasScaler",
+              "isCustomScript": false,
+              "properties": {
+                "uiScaleMode": "ScaleWithScreenSize",
+                "referenceResolution": [1920, 1080],
+                "screenMatchMode": "MatchWidthOrHeight",
+                "matchWidthOrHeight": 0.5
+              }
+            },
+            {
+              "name": "GraphicRaycaster",
+              "isCustomScript": false,
+              "properties": { "ignoreReversedGraphics": true }
+            }
+          ]
+        },
+        {
+          "uid": "obj_img_bg",
+          "name": "BackgroundImage",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_canvas_menu",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [0, 0],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0, 0],
+            "anchorMax": [1, 1],
+            "offsetMin": [0, 0],
+            "offsetMax": [0, 0]
+          },
+          "components": [
+            {
+              "name": "Image",
+              "isCustomScript": false,
+              "properties": {
+                "sprite": "UI_BG_Dark",
+                "color": "#1A1A2E",
+                "raycastTarget": false
+              }
+            }
+          ]
+        },
+        {
+          "uid": "obj_btn_play",
+          "name": "PlayButton",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_canvas_menu",
+          "rectTransform": {
+            "anchoredPosition": [0, -50, 0],
+            "sizeDelta": [300, 80],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0.5, 0.5],
+            "anchorMax": [0.5, 0.5]
+          },
+          "components": [
+            {
+              "name": "Image",
+              "isCustomScript": false,
+              "properties": {
+                "sprite": "UI_Btn_Play",
+                "raycastTarget": true
+              }
+            },
+            {
+              "name": "Button",
+              "isCustomScript": false,
+              "events": {
+                "onClick": [
+                  {
+                    "target_uid": "@obj_bgm_manager",
+                    "component": "AudioSource",
+                    "method": "Play",
+                    "param": "SFX_ButtonClick"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "uid": "obj_btn_quit",
+          "name": "QuitButton",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_canvas_menu",
+          "rectTransform": {
+            "anchoredPosition": [0, -160, 0],
+            "sizeDelta": [300, 80],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0.5, 0.5],
+            "anchorMax": [0.5, 0.5]
+          },
+          "components": [
+            {
+              "name": "Image",
+              "isCustomScript": false,
+              "properties": {
+                "sprite": "UI_Btn_Quit",
+                "raycastTarget": true
+              }
+            },
+            {
+              "name": "Button",
+              "isCustomScript": false,
+              "events": {
+                "onClick": [
+                  {
+                    "target_uid": "@obj_bgm_manager",
+                    "component": "AudioSource",
+                    "method": "Stop",
+                    "param": null
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "uid": "obj_btn_play_label",
+          "name": "PlayLabel",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_btn_play",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [280, 60],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0.5, 0.5],
+            "anchorMax": [0.5, 0.5]
+          },
+          "components": [
+            {
+              "name": "TextMeshProUGUI",
+              "isCustomScript": false,
+              "properties": {
+                "text": "PLAY",
+                "fontSize": 28,
+                "alignment": "Center",
+                "raycastTarget": false
+              }
+            }
+          ]
+        },
+        {
+          "uid": "obj_btn_quit_label",
+          "name": "QuitLabel",
+          "tag": "Untagged",
+          "layer": "UI",
+          "parent_uid": "obj_btn_quit",
+          "rectTransform": {
+            "anchoredPosition": [0, 0, 0],
+            "sizeDelta": [280, 60],
+            "pivot": [0.5, 0.5],
+            "anchorMin": [0.5, 0.5],
+            "anchorMax": [0.5, 0.5]
+          },
+          "components": [
+            {
+              "name": "TextMeshProUGUI",
+              "isCustomScript": false,
+              "properties": {
+                "text": "QUIT",
+                "fontSize": 28,
+                "alignment": "Center",
+                "raycastTarget": false
+              }
+            }
+          ]
+        },
+        {
+          "uid": "obj_event_system",
+          "name": "EventSystem",
+          "tag": "Untagged",
+          "layer": "Default",
+          "parent_uid": null,
+          "transform": {
+            "position": [0, 0, 0],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "EventSystem",
+              "isCustomScript": false,
+              "properties": {}
+            },
+            {
+              "name": "StandaloneInputModule",
+              "isCustomScript": false,
+              "properties": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

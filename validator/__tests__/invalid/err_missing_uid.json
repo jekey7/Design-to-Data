@@ -1,0 +1,31 @@
+{
+  "asset_manifest": {
+    "audio": [],
+    "ui_sprites": []
+  },
+  "scenes": [
+    {
+      "scene_name": "MinimalScene",
+      "gameObjects": [
+        {
+          "name": "Cube",
+          "tag": "Untagged",
+          "layer": "Default",
+          "parent_uid": null,
+          "transform": {
+            "position": [0, 0, 0],
+            "rotation": [0, 0, 0],
+            "scale": [1, 1, 1]
+          },
+          "components": [
+            {
+              "name": "MeshRenderer",
+              "isCustomScript": false,
+              "properties": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
