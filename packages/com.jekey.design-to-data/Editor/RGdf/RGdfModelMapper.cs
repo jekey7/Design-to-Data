@@ -17,7 +17,8 @@ namespace D2D.Editor
 
             return new GdfScene
             {
-                scene_name  = scene.name,
+                // [C4 V1] 편입 모드에서는 GDS scene_name 패턴에 맞게 정규화
+                scene_name  = mode == ExtractMode.Import ? UidNormalizer.NormalizeSceneName(scene.name) : scene.name,
                 gameObjects = gdfObjects
             };
         }
@@ -36,9 +37,8 @@ namespace D2D.Editor
             }
             else
             {
-                var nameToUid = UidNormalizer.BuildUidMap(allGOs);
-                foreach (var go in allGOs)
-                    map[go] = nameToUid[go.name];
+                // [C4 V1] GameObject 기준 대응표를 그대로 사용 (이름 기준 조회 제거)
+                map = UidNormalizer.BuildUidMap(allGOs);
             }
 
             return map;
@@ -52,6 +52,13 @@ namespace D2D.Editor
                             : null;
 
             var layerName = LayerMask.LayerToName(go.layer);
+            // [C4 V1] 편입 모드: 이름이 없는 레이어는 빈 문자열이 되어 GDS layer(minLength 1)를 어기므로
+            // 빌더(GameObjectFactory.SetLayer)가 미등록 레이어에 쓰는 것과 같은 Default로 기록한다.
+            if (mode == ExtractMode.Import && string.IsNullOrEmpty(layerName))
+            {
+                Debug.LogWarning($"[D2D] 이름 없는 레이어({go.layer}) → Default로 기록: {go.name}");
+                layerName = "Default";
+            }
             var isUI      = go.GetComponent<RectTransform>() != null && layerName == "UI";
 
             var gdfObj = new GdfGameObject

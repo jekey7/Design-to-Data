@@ -131,9 +131,9 @@
           ]
         },
         "components": {
-          "description": "이 게임오브젝트에 부착된 컴포넌트 목록. 최소 1개 이상 필수.",
+          "description": "이 게임오브젝트에 부착된 컴포넌트 목록. Transform/RectTransform은 별도 필드(transform/rectTransform, 필수)로 기록하므로 여기에 넣지 않는다. Transform만 가진 오브젝트(묶음용 부모, 뼈대 등)는 빈 배열이 된다. [C4 V1: minItems 1 → 0]",
           "type": "array",
-          "minItems": 1,
+          "minItems": 0,
           "items": {
             "$ref": "#/$defs/Component"
           }

@@ -29,3 +29,32 @@ export function validateParentUid(gdf) {
 
   return errors;
 }
+
+// RULE-R06 — uid 고유성 [C4 V1]
+// [VALIDATOR]
+//
+// 같은 scene 안에서 uid는 하나의 오브젝트만 가리켜야 한다.
+// uid가 겹치면 parent_uid와 이벤트 참조가 어느 오브젝트를 뜻하는지 정할 수 없고,
+// 빌더는 마지막 오브젝트로 덮어쓴다.
+export function validateUniqueUid(gdf) {
+  const errors = [];
+
+  for (const scene of gdf.scenes) {
+    const seen = new Map();
+    for (const obj of scene.gameObjects ?? []) {
+      seen.set(obj.uid, (seen.get(obj.uid) ?? 0) + 1);
+    }
+    for (const [uid, count] of seen) {
+      if (count > 1) {
+        errors.push({
+          code:     "GDS_R06",
+          severity: "error",
+          path:     `scenes[${scene.scene_name}].gameObjects[${uid}].uid`,
+          message:  `uid "${uid}"가 같은 씬에서 ${count}번 쓰였다.`
+        });
+      }
+    }
+  }
+
+  return errors;
+}

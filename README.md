@@ -79,6 +79,17 @@ npm test -- --runInBand
 
 See [the pipeline contract](docs/pipeline-contract.md) for the ownership and failure rules.
 
+## Versions
+
+- `v0`: the initial release. Used for the GDD-to-GDF generation experiment and for the V0 condition of the existing-scene import experiment (C4).
+- `v1`: `v0` plus the fixes found during the import experiment, used for its V1 condition.
+  - R-GDF import maps uids per GameObject instead of per name, so objects with the same name no longer share one uid.
+  - Import mode normalizes scene names and uids to the GDS patterns and records unnamed layers as `Default`.
+  - The validator adds RULE-R06 (`GDS_R06`): a uid must be unique within a scene.
+  - `components` may be empty (`minItems: 0`), because Transform and RectTransform are recorded in their own required fields. An object without a transform is still rejected.
+
+Check out a tag to reproduce a condition, for example `git checkout v0`.
+
 ## License
 
 [MIT](LICENSE)

@@ -438,3 +438,30 @@ describe("Part D — RULE-G08 / G09 에러 픽스처", () => {
     expect(err).toBeDefined();
   });
 });
+describe("Part E — RULE-R06 uid 고유성 [C4 V1]", () => {
+  test("err_duplicate_uid → GDS_R06 (two objects share one uid)", () => {
+    const gdf    = loadFixture("invalid", "err_duplicate_uid.json");
+    const result = validate(gdf);
+
+    expect(result.valid).toBe(false);
+    const err = result.errors.find(e => e.code === "GDS_R06");
+    expect(err).toBeDefined();
+    expect(err.message).toContain("obj_cube_01");
+  });
+});
+
+describe("Part F — Transform만 가진 오브젝트 [C4 V1]", () => {
+  const base = (objs) => ({ asset_manifest: { audio: [], ui_sprites: [] }, scenes: [{ scene_name: "S", gameObjects: objs }] });
+  const tf = { position: [0, 0, 0], rotation: [0, 0, 0], scale: [1, 1, 1] };
+
+  test("transform만 있고 components가 빈 오브젝트는 통과한다", () => {
+    const result = validate(base([{ uid: "grp", name: "Grp", tag: "Untagged", layer: "Default", parent_uid: null, transform: tf, components: [] }]));
+    expect(result.valid).toBe(true);
+  });
+
+  test("transform도 components도 없는 오브젝트는 거부한다", () => {
+    const result = validate(base([{ uid: "bad", name: "Bad", tag: "Untagged", layer: "Default", parent_uid: null, components: [] }]));
+    expect(result.valid).toBe(false);
+    expect(result.errors.some(e => e.code === "GDS_SCHEMA" && e.message.includes("transform"))).toBe(true);
+  });
+});

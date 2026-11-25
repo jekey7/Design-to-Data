@@ -8,19 +8,30 @@ namespace D2D.Editor
     public static class UidNormalizer
     {
         // 편입 모드 전용: go.name → GDS uid 패턴 (^[a-z0-9_]+$) 변환
-        public static Dictionary<string, string> BuildUidMap(List<GameObject> allGOs)
+        // [C4 V1] GameObject 기준으로 대응표를 만든다. 이전에는 go.name을 키로 써서
+        // 이름이 같은 오브젝트가 모두 마지막 uid 하나를 받았다.
+        public static Dictionary<GameObject, string> BuildUidMap(List<GameObject> allGOs)
         {
-            var result   = new Dictionary<string, string>();
+            var result   = new Dictionary<GameObject, string>();
             var usedUids = new HashSet<string>();
 
             foreach (var go in allGOs)
             {
                 var uid = Normalize(go.name, usedUids);
                 usedUids.Add(uid);
-                result[go.name] = uid;
+                result[go] = uid;
             }
 
             return result;
+        }
+
+        // [C4 V1] 편입 모드 전용: scene.name → GDS scene_name 패턴 (^[A-Za-z0-9_]+$) 변환
+        public static string NormalizeSceneName(string sceneName)
+        {
+            var s = RemoveNonAscii((sceneName ?? "").Trim());
+            s = Regex.Replace(s, @"[^A-Za-z0-9_]+", "_");
+            s = Regex.Replace(s, @"_+", "_").Trim('_');
+            return string.IsNullOrEmpty(s) ? "scene" : s;
         }
 
         // 단일 name → uid 변환 (외부 테스트용)
@@ -40,6 +51,9 @@ namespace D2D.Editor
 
             // 5. 비ASCII 문자 제거
             s = RemoveNonAscii(s);
+
+            // 5-1. [C4 V1] uid 패턴에서 허용하지 않는 나머지 문자(괄호, 점, & 등) → 언더스코어
+            s = Regex.Replace(s, @"[^a-z0-9_]", "_");
 
             // 6. 연속 언더스코어 정리 + 앞뒤 언더스코어 제거
             s = Regex.Replace(s, @"_+", "_").Trim('_');

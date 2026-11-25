@@ -5,7 +5,7 @@
 import Ajv from "ajv/dist/2019.js";
 import schema from "./GDS.json" with { type: "json" };
 
-import { validateParentUid }            from "./rules/referential-integrity.js";
+import { validateParentUid, validateUniqueUid } from "./rules/referential-integrity.js";
 import { validateCanvasHierarchy }      from "./rules/canvas-hierarchy.js";
 import { validateAudioManifest }        from "./rules/audio-manifest.js";
 import { validateSpriteManifest }       from "./rules/sprite-manifest.js";
@@ -172,6 +172,7 @@ export function validate(gdf) {
   // L2 Delta Detection에서 에러 분류를 더 명확하게 한다.
   const customErrors = [
     ...validateParentUid(gdf),
+    ...validateUniqueUid(gdf),   // [C4 V1] RULE-R06
     ...validateCanvasHierarchy(gdf),
     ...validateAudioManifest(gdf),
     ...validateSpriteManifest(gdf),
